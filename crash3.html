@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Crash Example</title>
+    <script>
+        // This attempts to allocate an excessive amount of memory
+        let largeArray = [];
+        while(true) {
+            largeArray.push(new Array(1000000).fill("X"));
+        }
+    </script>
+</head>
+<body>
+    <h1>This may crash Chrome by consuming too much memory</h1>
+</body>
+</html>
