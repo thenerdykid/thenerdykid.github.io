@@ -93,6 +93,16 @@
             iframe.src = url;
             win.document.body.appendChild(iframe);
         }
+        function openbid() {
+            var win = window.open();
+            var url = "https://bidoofery.github.io/nativegames/";
+            var iframe = win.document.createElement('iframe');
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.border = "none";
+            iframe.src = url;
+            win.document.body.appendChild(iframe);
+        }
     </script>
 </head>
 <body>
@@ -112,10 +122,15 @@
             <img src="images/404-glitch.png" alt="Get trolled lol">
             <span>FOR DEVS ONLY</span>
         </a>
-        <!-- Monkeygg2 -->
+        <!-- MonkeyGG2 -->
         <a href="https://theult1mateh4ck3r.github.io/mathematics" class="button" target="_blank" onclick="opengg()">
-            <img src="images/monkeygg2.ico" alt="Monkeygg2">
-            <span>Monkeygg2</span>
+            <img src="images/monkeygg2.ico" alt="MonkeyGG2">
+            <span>MonkeyGG2</span>
+        </a>
+        <!-- Bidoofery -->
+        <a href="https://bidoofery.github.io/nativegames/" class="button" target="_blank" onclick="openbid()">
+            <img src="images/monkeygg2.ico" alt="Bidoofery">
+            <span>Bidoofery</span>
         </a>
     </div>
 </body>
