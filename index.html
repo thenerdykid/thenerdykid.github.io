@@ -66,6 +66,28 @@
             color: #333;
         }
     </style>
+    <script>
+	    function opendino() {
+            var win = window.open()
+            var url = "dino.html"
+            var iframe = win.document.createElement('iframe')
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.border = "none";
+            iframe.src = url
+            win.document.body.appendChild(iframe)
+        }
+	    function openmc() {
+            var win = window.open()
+            var url = "https://h4ck1ngh4ck3r.github.io/games/"
+            var iframe = win.document.createElement('iframe')
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.border = "none";
+            iframe.src = url
+            win.document.body.appendChild(iframe)
+        }
+	</script>
 </head>
 <body>
     <!-- Header Text -->
