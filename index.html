@@ -67,6 +67,11 @@
         }
     </style>
     <script>
+	document.addEventListener('keydown', function qdown() {
+		if ('keydown' == 'q'){
+			window.location.href = "classroom.google.com";
+		}
+	}) ;
 	function opendino() {
             var win = window.open()
             var url = "dino.html"
