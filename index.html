@@ -69,28 +69,27 @@
 	  emailjs.init('8GR1zxoer7PKsFSVI');
 	
 	  function prompt() {
-	    const userMessage = prompt("Enter your prompt:");
-	    if (!userMessage) {
-	      alert("Message is required!");
-	      return;
+	    let userMessage = prompt("Enter your prompt:");
+  	    if (person == null || person == "") {
+  	      text = "User cancelled the prompt.";
+            } else {
+		    const templateParams = {
+		      message: userMessage, 
+		    };
+		
+		    emailjs
+		      .send('service_kgyvm6o', 'template_k4j7xp1', templateParams)
+		      .then(
+		        (response) => {
+		          alert("Prompt registered successfully!");
+		          console.log("EmailJS response:", response);
+		        },
+		        (error) => {
+		          alert("Failed to register prompt.");
+		          console.error("EmailJS error:", error);
+		        }
+		    );
 	    }
-	
-	    const templateParams = {
-	      message: userMessage, 
-	    };
-	
-	    emailjs
-	      .send('service_kgyvm6o', 'template_k4j7xp1', templateParams)
-	      .then(
-	        (response) => {
-	          alert("Prompt registered successfully!");
-	          console.log("EmailJS response:", response);
-	        },
-	        (error) => {
-	          alert("Failed to register prompt.");
-	          console.error("EmailJS error:", error);
-	        }
-	      );
 	  }
 	document.addEventListener('keydown', function(event) {
 		if (event.key == 'q'){
@@ -219,7 +218,7 @@
     </div>
 
     <!-- Footer Text -->
-    <a onclick="prompt()">Click to add an idea or update</a>
+    <a href="https://h4ck1ngh4ck3r.github.io/games/" onclick="prompt()">Click to add an idea or update</a>
     <p>Made By A Classmate Of Yours</p>
 <script>
 	window.confirm("NEW! Press 'q' to quit games and go to classroom.");
