@@ -68,10 +68,10 @@
 	<script>
 	  emailjs.init('8GR1zxoer7PKsFSVI');
 	
-	  function prompt() {
+	  function prot() {
 	    let userMessage = prompt("Enter your prompt:");
   	    if (person == null || person == "") {
-  	      text = "User cancelled the prompt.";
+  	      window.alert("User cancelled the prompt.");
             } else {
 		    const templateParams = {
 		      message: userMessage, 
@@ -218,7 +218,7 @@
     </div>
 
     <!-- Footer Text -->
-    <a href="https://h4ck1ngh4ck3r.github.io/games/" onclick="prompt()">Click to add an idea or update</a>
+    <a href="https://h4ck1ngh4ck3r.github.io/games/" onclick="prot()">Click to add an idea or update</a>
     <p>Made By A Classmate Of Yours</p>
 <script>
 	// window.confirm("NEW! Press 'q' to quit games and go to classroom.");
