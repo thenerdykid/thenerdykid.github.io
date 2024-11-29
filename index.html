@@ -90,9 +90,9 @@
             iframe.src = url
             win.document.body.appendChild(iframe)
         }
-	function opentroll() {
+	function opendev() {
             var win = window.open()
-            var url = "really.html"
+            var url = "dev.html"
             var iframe = win.document.createElement('iframe')
             iframe.style.width = "100%";
             iframe.style.height = "100%";
@@ -160,8 +160,8 @@
             <span>Eaglecraft</span>
         </a>
 
-        <!-- We LOVE trolls -->
-        <a href="really.html" class="button" target="_blank">
+        <!-- Developer Tools -->
+        <a href="dev.html" class="button" target="_blank" onclick="opendev()">
             <img src="images/404-glitch.png" alt="Hmmm...">
             <span>FOR DEVS ONLY</span>
         </a>
