@@ -65,6 +65,30 @@
         }
     </style>
     <script>
+	emailjs.init('8GR1zxoer7PKsFSVI');
+
+   		function sendPromptEmail() {
+		const userMessage = prompt("Enter your prompt:");
+		if (!userMessage) {
+			alert("Message is required!");
+			return;
+		}
+    		const templateParams = {
+			message: userMessage,
+         	};
+	emailjs
+        	.send('service_kgyvm6o', 'template_k4j7xp1', templateParams)
+	        	.then(
+				(response) => {
+            				alert("Prompt registered successfully!");
+           				console.log("EmailJS response:", response);
+        			},
+        			(error) => {
+            				alert("Failed to register prompt.");
+        				console.error("EmailJS error:", error);
+				}
+			);
+	 }
 	document.addEventListener('keydown', function(event) {
 		if (event.key == 'q'){
 			window.location.href = "https://classroom.google.com";
