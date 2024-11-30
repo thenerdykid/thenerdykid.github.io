@@ -187,7 +187,17 @@
             iframe.style.border = "none";
             iframe.src = url
             win.document.body.appendChild(iframe)
-        }	    
+        }
+	function opensug() {
+            var win = window.open()
+            var url = "/games/dev-notes"
+            var iframe = win.document.createElement('iframe')
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.border = "none";
+            iframe.src = url
+            win.document.body.appendChild(iframe)
+        }
 	</script>
 </head>
 <body>
@@ -240,7 +250,7 @@
         </a>
 
         <!-- Developer Notes -->
-        <a href="/games/dev-notes" class="button" target="_blank" onclick="opendev()">
+        <a href="/games/dev-notes" class="button" target="_blank" onclick="opensug()">
             <img src="images/404-glitch.png" alt="Suggestions & Update & Whatever">
             <span>Suggestions etc.</span>
         </a>
