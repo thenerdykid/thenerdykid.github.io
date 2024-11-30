@@ -92,7 +92,7 @@
 		          console.log("EmailJS response:", response);
 		        },
 		        (error) => {
-		          window.alert("Failed to register prompt.");
+		          window.alert("Failed to register prompt.", error);
 		          console.error("EmailJS error:", error);
 		        }
 		    );
@@ -227,6 +227,6 @@
     <!-- Footer Text -->
     <button class="idea" onclick="makeDod()">Click to add an idea or update</button>
     <p>Made By A Classmate Of Yours</p>
-    <div>V1.8.6 beta</div>
+    <div>V1.8.6 beta 2</div>
 </body>
 </html>
