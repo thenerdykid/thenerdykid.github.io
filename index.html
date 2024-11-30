@@ -71,11 +71,12 @@
             color: #333;
         }
     </style>
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-	emailjs.init('8GR1zxoer7PKsFSVI');
-	
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
 	function makeDod() {
+	    emailjs.init({
+                publicKey: "8GR1zxoer7PKsFSVI",
+      	    });
 	    let userMessage = prompt("Enter your prompt:");
 	    
 	    if (userMessage == null || userMessage == "") {
@@ -108,6 +109,8 @@
 	            );
 	    }
 	}
+  </script>
+  <script>
 	document.addEventListener('keydown', function(event) {
 		if (event.key == 'q'){
 			window.location.href = "https://classroom.google.com";
@@ -237,6 +240,6 @@
     <!-- Footer Text -->
     <button class="idea" onclick="makeDod()">Click to add an idea or update</button>
     <p>Made By A Classmate Of Yours</p>
-    <div>V1.8.6 beta 5</div>
+    <div>V1.8.6 beta 6</div>
 </body>
 </html>
