@@ -28,12 +28,13 @@
             margin-bottom: 20px;
         }
 
-        .container {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+	.container {
+	    display: grid;
+	    grid-template-columns: repeat(6, 1fr); /* 6 buttons per row */
+	    gap: 20px; /* Space between buttons */
+	    justify-content: center; /* Optional: Center the grid */
+	}
+
 
 	.idea {
 	    background-color: #ececec;
@@ -244,7 +245,6 @@
         </a>
 
         <!-- Developer Tools -->
-	<div><br></div>
         <a href="/games/dev" class="button" target="_blank" onclick="opendev()">
             <img src="images/404-glitch.png" alt="Hmmm...">
             <span>DEVS ONLY</span>
