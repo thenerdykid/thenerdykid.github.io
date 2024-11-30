@@ -1,2 +1,2 @@
-# games
-idk
+# The H4ck3r
+This code is open source; you dont need AT ALL to credit me; ...
