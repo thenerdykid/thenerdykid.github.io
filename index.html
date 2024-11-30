@@ -80,11 +80,11 @@
 		      .send('service_kgyvm6o', 'template_k4j7xp1', templateParams)
 		      .then(
 		        (response) => {
-		          alert("Prompt registered successfully!");
+		          window.alert("Prompt registered successfully!");
 		          console.log("EmailJS response:", response);
 		        },
 		        (error) => {
-		          alert("Failed to register prompt.");
+		          window.alert("Failed to register prompt.");
 		          console.error("EmailJS error:", error);
 		        }
 		    );
