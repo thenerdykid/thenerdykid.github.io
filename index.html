@@ -116,7 +116,14 @@
   </script>
   <script>
 	document.addEventListener('keydown', function(event) {
-		if (event.key == 'q'){
+		const originalContent = document.body.innerHTML;
+		if (event.key.toLowerCase() === 'q') {
+	        document.body.style.backgroundColor = 'white';
+        	document.body.innerHTML = '';
+	    } else if (event.key.toLowerCase() === 'w') {
+            document.body.style.backgroundColor = '';
+	        document.body.innerHTML = originalContent;
+	    } else if (event.key.toLowerCase() === 'e' {
 			window.location.href = "https://classroom.google.com";
 		}
 	});
@@ -276,10 +283,10 @@
     <!-- Footer Text -->
     <button class="idea" onclick="makeDod()">Click to add an idea or update</button>
     <p>Made By A Classmate Of Yours</p>
-    <div>V1.10.4</div>
+    <div>V1.11.0 beta</div>
     <script>
 	    //window.alert("If you have registered a suggestion, please check #\"Suggestions etc.\"")
-	    //window.alert("UNDER BETA. ERRORS MAY OCCUR.")
+	    window.alert("UNDER BETA. ERRORS MAY OCCUR.")
     </script>
 </body>
 </html>
