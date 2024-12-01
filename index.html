@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leibniz Formula for π - Math Geeks</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" id="favicon">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -116,14 +116,11 @@
   </script>
   <script>
 	document.addEventListener('keydown', function(event) {
-		const originalContent = document.body.innerHTML;
-		if (event.key.toLowerCase() === 'q') {
-	        document.body.style.backgroundColor = 'white';
-        	document.body.innerHTML = '';
-	    } else if (event.key.toLowerCase() === 'w') {
-            document.body.style.backgroundColor = '';
-	        document.body.innerHTML = originalContent;
-	    } else if (event.key.toLowerCase() === 'e' {
+		if (event.key() === 'e') {
+			document.title = "Home"
+			var favicon = document.getElementById('favicon');
+			favicon.href = 'favicon2.ico';
+	    } else if (event.key() === 'q' {
 			window.location.href = "https://classroom.google.com";
 		}
 	});
