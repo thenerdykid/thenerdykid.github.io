@@ -200,6 +200,16 @@
             iframe.src = url
             win.document.body.appendChild(iframe)
         }
+	function openchat() {
+            var win = window.open()
+            var url = "/games/chat"
+            var iframe = win.document.createElement('iframe')
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.border = "none";
+            iframe.src = url
+            win.document.body.appendChild(iframe)
+        }
 	</script>
 </head>
 <body>
@@ -255,12 +265,18 @@
             <img src="images/404-glitch.png" alt="Suggestions & Update & Whatever">
             <span>Suggestions etc.</span>
         </a>
+	
+        <!-- Developer Notes -->
+        <a href="/games/chat" class="button" target="_blank" onclick="openchat()">
+            <img src="images/chat.png" alt="Suggestions & Update & Whatever">
+            <span>Chat</span>
+        </a>
     </div>
 
     <!-- Footer Text -->
     <button class="idea" onclick="makeDod()">Click to add an idea or update</button>
     <p>Made By A Classmate Of Yours</p>
-    <div>V1.10.3</div>
+    <div>V1.10.4 beta</div>
     <script>
 	    window.alert("If you have registered a suggestion, please check #\"Suggestions etc.\"")
 	    //window.alert("UNDER BETA. ERRORS MAY OCCUR.")
