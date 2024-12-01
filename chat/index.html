@@ -87,7 +87,7 @@
     </style>
 </head>
 <body>
-    <div id="username-prompt">
+    <div id="username-prompt" style="display: none;">
         <p>Please enter your name to join the chat:</p>
         <input type="text" id="username-input" placeholder="Enter your name" />
         <button id="username-submit">Join</button>
@@ -128,14 +128,33 @@
         const usernameSubmit = document.getElementById('username-submit');
         const chatBox = document.getElementById('chat-box');
 
-        let username = '';
+        let username = localStorage.getItem('username');
 
-        // Prompt for username
+        // Check for stored username
+        if (username) {
+            showChatBox();
+        } else {
+            showUsernamePrompt();
+        }
+
+        // Show chat box
+        function showChatBox() {
+            usernamePrompt.style.display = 'none';
+            chatBox.style.display = 'flex';
+        }
+
+        // Show username prompt
+        function showUsernamePrompt() {
+            usernamePrompt.style.display = 'flex';
+            chatBox.style.display = 'none';
+        }
+
+        // Save username and show chat box
         usernameSubmit.addEventListener('click', () => {
             username = usernameInput.value.trim();
             if (username) {
-                usernamePrompt.style.display = 'none';
-                chatBox.style.display = 'flex';
+                localStorage.setItem('username', username);
+                showChatBox();
             }
         });
 
