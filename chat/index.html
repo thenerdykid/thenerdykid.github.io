@@ -197,6 +197,12 @@
             }
         });
 
+        document.addEventListener('keydown', function(event) {
+            if (usernamePrompt.style.display=='none'){
+    		    document.getElementById("user-text").focus();
+    		}
+	    });
+
         displayMessages();
     </script>
 </body>
