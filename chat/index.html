@@ -49,11 +49,51 @@
         #send-btn:hover {
             background-color: #0056b3;
         }
+
+        #username-prompt {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 18px;
+        }
+
+        #username-prompt input {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        #username-prompt button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #username-prompt button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
+    <div id="username-prompt">
+        <p>Please enter your name to join the chat:</p>
+        <input type="text" id="username-input" placeholder="Enter your name" />
+        <button id="username-submit">Join</button>
+    </div>
 
-    <div id="chat-box">
+    <div id="chat-box" style="display: none;">
         <div id="chat-window"></div>
         <div style="display: flex;">
             <input type="text" id="user-message" placeholder="Type your message..." />
@@ -63,11 +103,9 @@
 
     <!-- Firebase SDK -->
     <script type="module">
-        // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
         import { getDatabase, ref, push, set, onValue } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 
-        // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBs_jC99wsgNIwO7ibsFfnKSXjF4a1EDHU",
             authDomain: "chat-1de77.firebaseapp.com",
@@ -79,21 +117,34 @@
             measurementId: "G-24BKCK0H0S"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
-        // Elements
         const chatWindow = document.getElementById('chat-window');
         const sendButton = document.getElementById('send-btn');
         const messageInput = document.getElementById('user-message');
+        const usernamePrompt = document.getElementById('username-prompt');
+        const usernameInput = document.getElementById('username-input');
+        const usernameSubmit = document.getElementById('username-submit');
+        const chatBox = document.getElementById('chat-box');
+
+        let username = '';
+
+        // Prompt for username
+        usernameSubmit.addEventListener('click', () => {
+            username = usernameInput.value.trim();
+            if (username) {
+                usernamePrompt.style.display = 'none';
+                chatBox.style.display = 'flex';
+            }
+        });
 
         // Function to send a message
         function sendMessage(message) {
             const messagesRef = ref(database, 'messages');
             const newMessageRef = push(messagesRef);
             set(newMessageRef, {
-                message: message,
+                message: `>${username}: ${message}`,
                 timestamp: Date.now()
             }).catch(error => {
                 console.error("Error sending message:", error);
@@ -104,7 +155,7 @@
         function displayMessages() {
             const messagesRef = ref(database, 'messages');
             onValue(messagesRef, (snapshot) => {
-                chatWindow.innerHTML = ''; // Clear the chat window
+                chatWindow.innerHTML = '';
                 const messages = snapshot.val();
                 if (messages) {
                     Object.values(messages).forEach(msg => {
@@ -112,14 +163,13 @@
                         messageElement.textContent = msg.message;
                         chatWindow.appendChild(messageElement);
                     });
-                    chatWindow.scrollTop = chatWindow.scrollHeight; // Scroll to the bottom
+                    chatWindow.scrollTop = chatWindow.scrollHeight;
                 }
             }, error => {
                 console.error("Error loading messages:", error);
             });
         }
 
-        // Handle send button click
         sendButton.addEventListener('click', () => {
             const message = messageInput.value.trim();
             if (message) {
@@ -128,7 +178,6 @@
             }
         });
 
-        // Load messages on page load
         displayMessages();
     </script>
 </body>
