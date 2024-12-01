@@ -202,6 +202,17 @@
 	        messageInput.focus();
 	    }
 	});
+	    
+	// Event listener for Enter key to send the message
+	messageInput.addEventListener('keydown', (event) => {
+	    if (event.key === 'Enter') {
+	        const message = messageInput.value.trim();
+	        if (message) {
+	            sendMessage(message);
+	            messageInput.value = '';
+	        }
+	    }
+	});
 
 
         displayMessages();
