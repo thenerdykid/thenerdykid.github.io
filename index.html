@@ -116,11 +116,11 @@
   </script>
   <script>
 	document.addEventListener('keydown', function(event) {
-		if (event.key() === 'e') {
+		if (event.key === 'e') {
 			document.title = "Home"
 			var favicon = document.getElementById('favicon');
 			favicon.href = 'favicon2.ico';
-	    	} else if (event.key() === 'q' {
+	    	} else if (event.key === 'q') {
 			window.location.href = "https://classroom.google.com";
 		}
 	});
