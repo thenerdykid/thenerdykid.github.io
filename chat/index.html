@@ -197,11 +197,12 @@
             }
         });
 
-        document.addEventListener('keydown', function(event) {
-            if (usernamePrompt.style.display=='none'){
-    		    document.getElementById("user-text").focus();
-    		}
-	    });
+	document.addEventListener('keydown', function(event) {
+	    if (usernamePrompt.style.display === 'none' && !event.target.matches('input, textarea')) {
+	        messageInput.focus();
+	    }
+	});
+
 
         displayMessages();
     </script>
