@@ -236,20 +236,18 @@
     });
 
     // Function to send a message
-    // Function to send a message
     function sendMessage(message) {
         const messagesRef = ref(database, 'messages');
         const newMessageRef = push(messagesRef);
     
-        // Get current date and time
-        let currentDateTime = new Date();
-        let formattedDateTime = currentDateTime.toLocaleString(); // Format the current date and time
-
-        formattedDateTime = formattedDateTime.replace("02/12/2024, ", "")
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
     
         // Push message with the timestamp
         set(newMessageRef, {
-            message: `${formattedDateTime}> ${username}-: ${message}`,
+            message: `${hours}:${minutes}:${seconds}> ${username}-: ${message}`,
             timestamp: Date.now()
         }).catch(error => {
             console.error("Error sending message:", error);
