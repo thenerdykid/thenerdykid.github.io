@@ -6,7 +6,6 @@
     <title>Firebase Chat</title>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <style>
-        /* Simple chat styling */
         #chat-box {
             width: 100%;
 			max-width: 800px;
@@ -319,6 +318,25 @@
         changeNameModal.style.display = 'none';
         chatBox.style.display = 'flex';  // Show the chat box
     });
+
+	darkMode = localStorage.getItem('dark')
+
+	window.onLoad = function darkMode(){
+		if (darkMode === 'True) {
+			  document.body.style.backgroundColor = "black";
+			  document.body.style.color = "white";
+		} else if (darkMode === 'False')
+			//pass
+		} else {
+			if (confirm("Do you want dark mode on or off?")) {
+				localStorage.setItem('dark', 'True')
+				document.body.style.backgroundColor = "black";
+				document.body.style.color = "white";
+			} else {
+				localStorage.setItem('dark', 'False')
+			}
+		}
+	}
 
     displayMessages();
 </script>
