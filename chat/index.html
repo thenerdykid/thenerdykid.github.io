@@ -159,138 +159,142 @@
     </div>
 
     <!-- Firebase SDK -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-        import { getDatabase, ref, push, set, onValue } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { getDatabase, ref, push, set, onValue } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyBs_jC99wsgNIwO7ibsFfnKSXjF4a1EDHU",
-            authDomain: "chat-1de77.firebaseapp.com",
-            databaseURL: "https://chat-1de77-default-rtdb.europe-west1.firebasedatabase.app/",
-            projectId: "chat-1de77",
-            storageBucket: "chat-1de77.appspot.com",
-            messagingSenderId: "550076765418",
-            appId: "1:550076765418:web:ca9b1aff5b2bc806a3f393",
-            measurementId: "G-24BKCK0H0S"
-        };
+    const firebaseConfig = {
+        apiKey: "AIzaSyBs_jC99wsgNIwO7ibsFfnKSXjF4a1EDHU",
+        authDomain: "chat-1de77.firebaseapp.com",
+        databaseURL: "https://chat-1de77-default-rtdb.europe-west1.firebasedatabase.app/",
+        projectId: "chat-1de77",
+        storageBucket: "chat-1de77.appspot.com",
+        messagingSenderId: "550076765418",
+        appId: "1:550076765418:web:ca9b1aff5b2bc806a3f393",
+        measurementId: "G-24BKCK0H0S"
+    };
 
-        const app = initializeApp(firebaseConfig);
-        const database = getDatabase(app);
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
 
-        const chatWindow = document.getElementById('chat-window');
-        const sendButton = document.getElementById('send-btn');
-        const messageInput = document.getElementById('user-message');
-        const usernamePrompt = document.getElementById('username-prompt');
-        const usernameInput = document.getElementById('username-input');
-        const usernameSubmit = document.getElementById('username-submit');
-        const chatBox = document.getElementById('chat-box');
-        const changeNameButton = document.getElementById('change-name-btn');
-        const changeNameModal = document.getElementById('change-name-modal');
-        const newUsernameInput = document.getElementById('new-username-input');
-        const submitNewUsernameButton = document.getElementById('submit-new-username');
-        const cancelChangeButton = document.getElementById('cancel-change');
+    const chatWindow = document.getElementById('chat-window');
+    const sendButton = document.getElementById('send-btn');
+    const messageInput = document.getElementById('user-message');
+    const usernamePrompt = document.getElementById('username-prompt');
+    const usernameInput = document.getElementById('username-input');
+    const usernameSubmit = document.getElementById('username-submit');
+    const chatBox = document.getElementById('chat-box');
+    const changeNameButton = document.getElementById('change-name-btn');
+    const changeNameModal = document.getElementById('change-name-modal');
+    const newUsernameInput = document.getElementById('new-username-input');
+    const submitNewUsernameButton = document.getElementById('submit-new-username');
+    const cancelChangeButton = document.getElementById('cancel-change');
 
-        let username = localStorage.getItem('username');
+    let username = localStorage.getItem('username');
 
-        // Check for stored username
-        if (username === 'losiows eiwjxjsk') {
-            changeNameButton.style.display = 'inline-block'; // Show "Change Name" button
+    // Check for stored username
+    if (username === 'losiows eiwjxjsk') {
+        changeNameButton.style.display = 'inline-block'; // Show "Change Name" button
+        showChatBox();
+    } else if (username === 'Alex') {
+        showChatBox(); 
+    } else if (username) {
+        showChatBox();
+    } else {
+        showUsernamePrompt();
+    }
+
+    // Show chat box
+    function showChatBox() {
+        usernamePrompt.style.display = 'none';
+        chatBox.style.display = 'flex';
+    }
+
+    // Show username prompt
+    function showUsernamePrompt() {
+        usernamePrompt.style.display = 'flex';
+        chatBox.style.display = 'none';
+    }
+
+    // Save username and show chat box
+    usernameSubmit.addEventListener('click', () => {
+        username = usernameInput.value.trim();
+        if (username) {
+            localStorage.setItem('username', username);
             showChatBox();
-        } else if (username === 'Alex') {
-            showChatBox(); 
-        } else if (username) {
-            showChatBox();
-        } else {
-            showUsernamePrompt();
         }
+    });
 
-        // Show chat box
-        function showChatBox() {
-            usernamePrompt.style.display = 'none';
-            chatBox.style.display = 'flex';
-        }
-
-        // Show username prompt
-        function showUsernamePrompt() {
-            usernamePrompt.style.display = 'flex';
-            chatBox.style.display = 'none';
-        }
-
-        // Save username and show chat box
-        usernameSubmit.addEventListener('click', () => {
-            username = usernameInput.value.trim();
-            if (username) {
-                localStorage.setItem('username', username);
-                showChatBox();
-            }
+    // Function to send a message
+    function sendMessage(message) {
+        const messagesRef = ref(database, 'messages');
+        const newMessageRef = push(messagesRef);
+        set(newMessageRef, {
+            message: `>${username}: ${message}`,
+            timestamp: Date.now()
+        }).catch(error => {
+            console.error("Error sending message:", error);
         });
+    }
 
-        // Function to send a message
-        function sendMessage(message) {
-            const messagesRef = ref(database, 'messages');
-            const newMessageRef = push(messagesRef);
-            set(newMessageRef, {
-                message: `>${username}: ${message}`,
-                timestamp: Date.now()
-            }).catch(error => {
-                console.error("Error sending message:", error);
-            });
+    // Function to display messages
+    function displayMessages() {
+        const messagesRef = ref(database, 'messages');
+        onValue(messagesRef, (snapshot) => {
+            chatWindow.innerHTML = '';
+            const messages = snapshot.val();
+            if (messages) {
+                Object.values(messages).forEach(msg => {
+                    const messageElement = document.createElement('div');
+                    messageElement.textContent = msg.message;
+                    chatWindow.appendChild(messageElement);
+                });
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }
+        }, error => {
+            console.error("Error loading messages:", error);
+        });
+    }
+
+    sendButton.addEventListener('click', () => {
+        const message = messageInput.value.trim();
+        if (message) {
+            sendMessage(message);
+            messageInput.value = '';
         }
+    });
 
-        // Function to display messages
-        function displayMessages() {
-            const messagesRef = ref(database, 'messages');
-            onValue(messagesRef, (snapshot) => {
-                chatWindow.innerHTML = '';
-                const messages = snapshot.val();
-                if (messages) {
-                    Object.values(messages).forEach(msg => {
-                        const messageElement = document.createElement('div');
-                        messageElement.textContent = msg.message;
-                        chatWindow.appendChild(messageElement);
-                    });
-                    chatWindow.scrollTop = chatWindow.scrollHeight;
-                }
-            }, error => {
-                console.error("Error loading messages:", error);
-            });
-        }
-
-        sendButton.addEventListener('click', () => {
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' && messageInput === document.activeElement) {
             const message = messageInput.value.trim();
             if (message) {
                 sendMessage(message);
-                messageInput.value = '';
+                messageInput.value = ''; // Clear input after sending
             }
-        });
+        }
+    });
 
-        document.addEventListener('keydown', function(event) {
-            if (usernamePrompt.style.display === 'none' && !event.target.matches('input, textarea')) {
-                messageInput.focus();
-            }
-        });
+    // Change name functionality for "losiows eiwjxjsk" only
+    changeNameButton.addEventListener('click', () => {
+        changeNameModal.style.display = 'flex';
+        chatBox.style.display = 'none';  // Hide the chat box
+    });
 
-        // Change name functionality for "losiows eiwjxjsk" only
-        changeNameButton.addEventListener('click', () => {
-            changeNameModal.style.display = 'flex';
-            chatBox.style.display = 'none';  // Hide the chat box
-        });
+    submitNewUsernameButton.addEventListener('click', () => {
+        const newUsername = newUsernameInput.value.trim();
+        if (newUsername) {
+            localStorage.setItem('username', newUsername);
+            username = newUsername;  // Update the username variable
+            showChatBox();  // Show the chat box with new name
+        }
+    });
 
-        submitNewUsernameButton.addEventListener('click', () => {
-            const newUsername = newUsernameInput.value.trim();
-            if (newUsername) {
-                localStorage.setItem('username', newUsername);
-                username = newUsername;  // Update the username variable
-                showChatBox();  // Show the chat box with new name
-            }
-        });
+    cancelChangeButton.addEventListener('click', () => {
+        changeNameModal.style.display = 'none';
+        chatBox.style.display = 'flex';  // Show the chat box
+    });
 
-        cancelChangeButton.addEventListener('click', () => {
-            changeNameModal.style.display = 'none';
-            chatBox.style.display = 'flex';  // Show the chat box
-        });
-
-        displayMessages();
-    </script>
+    displayMessages();
+</script>
 </body>
 </html>
