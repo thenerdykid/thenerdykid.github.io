@@ -247,7 +247,7 @@
     
         // Push message with the timestamp
         set(newMessageRef, {
-            message: `${hours}:${minutes}:${seconds}> ${username}-: ${message}`,
+            message: `${hours}:${minutes}:${seconds}>>> ${username}: ${message}`,
             timestamp: Date.now()
         }).catch(error => {
             console.error("Error sending message:", error);
