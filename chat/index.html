@@ -319,25 +319,6 @@
         chatBox.style.display = 'flex';  // Show the chat box
     });
 
-	darkMode = localStorage.getItem('dark')
-
-	window.onLoad = function darkMode(){
-		if (darkMode === 'True) {
-			  document.body.style.backgroundColor = "black";
-			  document.body.style.color = "white";
-		} else if (darkMode === 'False')
-			//pass
-		} else {
-			if (confirm("Do you want dark mode on or off?")) {
-				localStorage.setItem('dark', 'True')
-				document.body.style.backgroundColor = "black";
-				document.body.style.color = "white";
-			} else {
-				localStorage.setItem('dark', 'False')
-			}
-		}
-	}
-
     displayMessages();
 </script>
 </body>
