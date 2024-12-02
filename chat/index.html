@@ -158,6 +158,9 @@
         <button id="cancel-change">Cancel</button>
     </div>
 
+    <!-- Current Date and Time Display -->
+    <div id="currentDateTime" style="text-align:center; margin-top: 20px;"></div>
+
     <!-- Firebase SDK -->
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
@@ -189,8 +192,15 @@
     const newUsernameInput = document.getElementById('new-username-input');
     const submitNewUsernameButton = document.getElementById('submit-new-username');
     const cancelChangeButton = document.getElementById('cancel-change');
+    const currentDateTime = document.getElementById('currentDateTime');
 
     let username = localStorage.getItem('username');
+
+    // Display current date and time
+    let currentDateTimeValue = new Date();
+    let formattedDateTime = currentDateTimeValue.toLocaleString(); // Format the current date and time
+    formattedDateTime = formattedDateTime.replace("/12/2024,", ""); // Replace specific part from string
+    currentDateTime.innerHTML = `Current Date and Time: ${formattedDateTime}`;
 
     // Check for stored username
     if (username === 'losiows eiwjxjsk') {
