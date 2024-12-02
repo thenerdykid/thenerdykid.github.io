@@ -237,6 +237,12 @@
 
     // Function to send a message
     function sendMessage(message) {
+        // Prevent user with the name "Rivan" from sending messages
+        if (username === 'Rivan') {
+            alert('ERROR. Please contact me.');
+            return; // Do not send message
+        }
+
         const messagesRef = ref(database, 'messages');
         const newMessageRef = push(messagesRef);
     
