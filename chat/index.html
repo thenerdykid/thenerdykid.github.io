@@ -207,7 +207,6 @@
         showChatBox();
     } else if (username === 'Nerd lol hii guys') {
 	localStorage.setItem('username', 'BLANK')
-        changeNameButton.style.display = 'inline-block'; // Show "Change Name" button
         showChatBox();
     } else if (username === 'Alex') {
         showChatBox(); 
@@ -238,12 +237,10 @@
         }
     });
 
-    // Function to send a message
     function sendMessage(message) {
-        // Prevent user with the name "Rivan" from sending messages
         if (username === 'Rivan') {
             alert('ERROR. Please contact me.');
-            return; // Do not send message
+            return;
         }
 
         const messagesRef = ref(database, 'messages');
@@ -254,7 +251,6 @@
         const minutes = now.getMinutes();
         const seconds = now.getSeconds();
     
-        // Push message with the timestamp
         set(newMessageRef, {
             message: `${hours}:${minutes}:${seconds}>>> ${username}: ${message}`,
             timestamp: Date.now()
@@ -264,7 +260,7 @@
     }
 
 
-    // Function to display messages
+    // Display messages
     function displayMessages() {
         const messagesRef = ref(database, 'messages');
         onValue(messagesRef, (snapshot) => {
