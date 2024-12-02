@@ -199,15 +199,12 @@
 
     let username = localStorage.getItem('username');
 
-    // Display current date and time
     let currentDateTimeValue = new Date();
-    let formattedDateTime = currentDateTimeValue.toLocaleString(); // Format the current date and time
-    formattedDateTime = formattedDateTime.replace("/12/2024,", ""); // Replace specific part from string
+    let formattedDateTime = currentDateTimeValue.toLocaleString();
     currentDateTime.innerHTML = `Current Date and Time: ${formattedDateTime}`;
 
-    // Check for stored username
     if (username === 'noobmasta6969') {
-        changeNameButton.style.display = 'inline-block'; // Show "Change Name" button
+        changeNameButton.style.display = 'inline-block';
         showChatBox();
     } else if (username === 'Rhys') {
         showChatBox(); 
