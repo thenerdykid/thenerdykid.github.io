@@ -293,15 +293,15 @@
 
     document.addEventListener('keydown', function(event) {
         if (event.key === 'e') {
-			document.title = "Leibniz Formula for π - Math Geeks"
-			var favicon = document.getElementById('favicon');
-			favicon.href = 'favicon.ico';
+		document.title = "Leibniz Formula for π - Math Geeks"
+		var favicon = document.getElementById('favicon');
+		favicon.href = 'favicon.ico';
     	} else if (event.key === 'q') {
-			window.location.href = "https://classroom.google.com";
+		window.location.href = "https://classroom.google.com";
 		} else if (event.key === 'Enter' && messageInput === document.activeElement) {
-    		const message = messageInput.value.trim();            
+    			const message = messageInput.value.trim();            
 			if (message) {
-	            sendMessage(message);
+			sendMessage(message);
             	messageInput.value = ''; // Clear input after sending
         	}
         }
