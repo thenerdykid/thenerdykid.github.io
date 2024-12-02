@@ -206,7 +206,8 @@
     if (username === 'noobmasta6969') {
         changeNameButton.style.display = 'inline-block'; // Show "Change Name" button
         showChatBox();
-    } else if (username === 'Rman') {
+    } else if (username === 'Rhys') {
+		localStorage.setItem('username', 'Nerd lol hii guys')
         changeNameButton.style.display = 'inline-block'; // Show "Change Name" button
         showChatBox();
     } else if (username === 'Alex') {
@@ -299,11 +300,11 @@
     	} else if (event.key === 'q') {
 			window.location.href = "https://classroom.google.com";
 		} else if (event.key === 'Enter' && messageInput === document.activeElement) {
-            const message = messageInput.value.trim();
-            if (message) {
-                sendMessage(message);
-                messageInput.value = ''; // Clear input after sending
-            }
+    		const message = messageInput.value.trim();            
+			if (message) {
+	            sendMessage(message);
+            	messageInput.value = ''; // Clear input after sending
+        	}
         }
     });
 
