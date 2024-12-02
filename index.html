@@ -115,18 +115,19 @@
 	}
   </script>
   <script>
-	document.addEventListener('keydown', function(event) {
-		if (event.key === 'e') {
-			document.title = "Leibniz Formula for π - Math Geeks"
-			var favicon = document.getElementById('favicon');
-			favicon.href = 'favicon.ico';
-			window.alert("ERROR")
-	    	} else if (event.key === 'q') {
-			window.location.href = "https://classroom.google.com";
-			window.alert("ERROR")
-		}
-	});
-	function opendino() {
+		document.addEventListener('keydown', function(event) {
+			window.alert("Activated")
+			if (event.key === 'e') {
+				document.title = "Leibniz Formula for π - Math Geeks"
+				var favicon = document.getElementById('favicon');
+				favicon.href = 'favicon.ico';
+				window.alert("Activated")
+		    } else if (event.key === 'q') {
+				window.location.href = "https://classroom.google.com";
+				window.alert("Activated")
+			}
+		});
+		function opendino() {
             var win = window.open()
             var url = "/games/dino"
             var iframe = win.document.createElement('iframe')
@@ -136,7 +137,7 @@
             iframe.src = url
             win.document.body.appendChild(iframe)
         }
-	function openmc() {
+		function openmc() {
             var win = window.open()
             var url = "https://theult1mateh4ck3r.github.io/games/"
             var iframe = win.document.createElement('iframe')
@@ -146,7 +147,7 @@
             iframe.src = url
             win.document.body.appendChild(iframe)
         }
-	function opendev() {
+		function opendev() {
             var win = window.open()
             var url = "/games/dev"
             var iframe = win.document.createElement('iframe')
@@ -156,7 +157,7 @@
             iframe.src = url
             win.document.body.appendChild(iframe)
         }
-	function opengg() {
+		function opengg() {
             var win = window.open()
             var url = "https://theult1mateh4ck3r.github.io/mathematics"
             var iframe = win.document.createElement('iframe')
@@ -166,7 +167,7 @@
             iframe.src = url
             win.document.body.appendChild(iframe)
         }
-	function openbid() {
+		function openbid() {
             var win = window.open()
             var url = "https://hackersforli123fe.github.io/pical/"
             var iframe = win.document.createElement('iframe')
@@ -176,7 +177,7 @@
             iframe.src = url
             win.document.body.appendChild(iframe)
         }
-	function openslop() {
+		function openslop() {
             var win = window.open()
             var url = "https://hackersforli123fe.github.io/pical/slope/"
             var iframe = win.document.createElement('iframe')
@@ -186,7 +187,7 @@
             iframe.src = url
             win.document.body.appendChild(iframe)
         }
-	function openneal() {
+		function openneal() {
             var win = window.open()
             var url = "https://neal.fun/"
             var iframe = win.document.createElement('iframe')
@@ -196,7 +197,7 @@
             iframe.src = url
             win.document.body.appendChild(iframe)
         }
-	function opensug() {
+		function opensug() {
             var win = window.open()
             var url = "/games/dev-notes"
             var iframe = win.document.createElement('iframe')
@@ -206,9 +207,9 @@
             iframe.src = url
             win.document.body.appendChild(iframe)
         }
-	function openchat() {
+		function openchat() {
             var win = window.open()
-            var url = "/games/chat
+            var url = "/games/chat"
             var iframe = win.document.createElement('iframe')
             iframe.style.width = "100%";
             iframe.style.height = "100%";
@@ -273,7 +274,7 @@
         </a>
 	
         <!-- Developer Notes -->
-        <a href="/games/chat" class="button" target="_blank"  onclick="openchat()">
+        <a href="#" class="button" target="_blank"  onclick="openchat()">
             <img src="images/chat.png" alt="Chat Room">
             <span>Chat</span>
         </a>
@@ -281,7 +282,6 @@
 
     <!-- Footer Text -->
     <button class="idea" onclick="makeDod()">Click to add an idea or update</button>
-    <p>Made By A Classmate Of Yours</p>
     <div>V1.11.1 beta</div>
     <script>
 	    //window.alert("If you have registered a suggestion, please check #\"Suggestions etc.\"")
