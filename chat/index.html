@@ -244,10 +244,12 @@
         // Get current date and time
         let currentDateTime = new Date();
         let formattedDateTime = currentDateTime.toLocaleString(); // Format the current date and time
+
+        formattedDateTime.replace("02/12/2024 ", "")
     
         // Push message with the timestamp
         set(newMessageRef, {
-            message: `>${username}: ${message} - ${formattedDateTime}`,
+            message: `${formattedDateTime}> ${username}-: ${message}`,
             timestamp: Date.now()
         }).catch(error => {
             console.error("Error sending message:", error);
