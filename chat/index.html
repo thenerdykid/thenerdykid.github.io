@@ -5,25 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firebase Chat</title>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <style>
-		#chat-window {
-	    	flex: 1;
-		    overflow-y: auto;
-		    margin-bottom: 10px;
-		    border: 1px solid #ddd;
-		    padding: 10px;
-		    background-color: #f9f9f9;
-		    border-radius: 4px;
-		    font-family: Inter;
-		}
-		
-		#user-message {
-		    padding: 10px;
-		    width: calc(100% - 85px);
-		    margin-right: 5px;
-		    border: 1px solid #ddd;
-		    border-radius: 4px;
-		}
+    <style>        #chat-box {
+            width: 100%;
+			max-width: 800px;
+            height: 500px;
+            border: 2px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px;
+            margin: 0 auto;
+        }
+
+        #chat-window {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+			weight: none;
+			font-family: Inter;
+        }
 
         #send-btn {
             padding: 10px;
