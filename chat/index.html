@@ -6,37 +6,28 @@
     <title>Firebase Chat</title>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <style>
-        #chat-box {
-            width: 100%;
-			max-width: 800px;
-            height: 500px;
-            border: 2px solid #ccc;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 10px;
-            margin: 0 auto;
-        }
-
-        #chat-window {
-            flex: 1;
-            overflow-y: auto;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border-radius: 4px;
-			weight: none;
-			font-family: Inter;
-        }
-
-        #user-message {
-            padding: 10px;
-            width: calc(100% - 85px);
-            margin-right: 5px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
+		#chat-window {
+		    flex: 1;
+		    overflow-y: auto;
+		    margin-bottom: 10px;
+		    border: 1px solid #ddd;
+		    padding: 10px;
+		    background-color: #f9f9f9;
+		    border-radius: 4px;
+		    word-wrap: break-word;  /* Ensures text will break at the edge */
+		    white-space: normal;    /* Allows text to wrap to the next line */
+		    font-family: Inter;
+		}
+		
+		#user-message {
+		    padding: 10px;
+		    width: calc(100% - 85px);
+		    margin-right: 5px;
+		    border: 1px solid #ddd;
+		    border-radius: 4px;
+		    white-space: normal;  /* Allows text to wrap */
+		    word-wrap: break-word; /* Ensures text will break at the edge */
+		}
 
         #send-btn {
             padding: 10px;
@@ -200,7 +191,7 @@
 
     let currentDateTimeValue = new Date();
     let formattedDateTime = currentDateTimeValue.toLocaleString();
-    currentDateTime.innerHTML = `Current Date and Time: ${formattedDateTime}`;
+    currentDateTime.innerHTML = `Current Date and Time: ${formattedDateTime} test`;
 
     if (username === 'noobmasta6969') {
         changeNameButton.style.display = 'inline-block';
@@ -309,9 +300,9 @@
         const newUsername = newUsernameInput.value.trim();
         if (newUsername) {
             localStorage.setItem('username', newUsername);
-            username = newUsername;  // Update the username variable
-            showChatBox();  // Show the chat box with new name
-        }
+            username = newUsername;
+            showChatBox();
+		}
     });
 
     cancelChangeButton.addEventListener('click', () => {
