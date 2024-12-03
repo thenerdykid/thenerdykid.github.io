@@ -240,6 +240,11 @@
             return;
         }
 
+
+	if (username === 'Kayaan the f15') {
+            alert('ERROR. Please contact me.');
+            return;
+        }
         const messagesRef = ref(database, 'messages');
         const newMessageRef = push(messagesRef);
     
