@@ -28,26 +28,25 @@
             margin-bottom: 20px;
         }
 
-	.container {
-	    display: grid;
-	    grid-template-columns: repeat(6, 1fr); /* 6 buttons per row */
-	    gap: 20px; /* Space between buttons */
-	    justify-content: center; /* Optional: Center the grid */
-	}
+        .container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+            justify-content: center;
+        }
 
+        .idea {
+            background-color: #ececec;
+            color: #000000;
+            font-size: 1.4em;
+            border: 0.5px solid #000000;
+            transition: box-shadow 0.6s;
+        }
 
-	.idea {
-	    background-color: #ececec;
-	    color: #000000;
-	    font-size: 1.4em;
-	    border: 0.5px solid #000000;
-	    transition: box-shadow 0.6s;
-	}
-
-	.idea:hover {
-	    transform: scale(1.05);
+        .idea:hover {
+            transform: scale(1.05);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-	}
+        }
 
         .button {
             display: flex;
@@ -56,7 +55,7 @@
             justify-content: center;
             text-decoration: none;
             width: 150px;
-	    margin-bottom: 20px;
+            margin-bottom: 20px;
             height: 150px;
             background-color: #ffffff;
             border-radius: 15px;
@@ -82,219 +81,129 @@
     </style>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
-	function makeDod() {
-	    emailjs.init({
-                publicKey: "8GR1zxoer7PKsFSVI",
-      	    });
-	    let userMessage = prompt("Enter your prompt:");
-	    
-	    if (userMessage == null || userMessage == "") {
-	        window.alert("User cancelled the prompt.");
-	    } else {
-	        const templateParams = {
-	            message: userMessage, 
-	        };
-	
-	        emailjs
-	            .send('service_kgyvm6o', 'template_typixsi', templateParams)
-	            .then(
-	                (response) => {
-	                    window.alert("Prompt sent (hopefully) successfully! Please check #\"Suggestions etc.\" to see the current status of your suggestion.");
-	                    console.log("EmailJS response:", response);
-	                },
-	                (error) => {
-	                    console.error("EmailJS error:", error);
-	                    if (error.response) {
-	                        window.alert("Failed to register prompt: " + error.response.text);
-	                    } else {
-	                        window.alert("Failed to register prompt. Please try again.");
-	                    }
-	                }
-	            );
-	    }
-	}
-  </script>
-  <script>
-		document.addEventListener('keydown', function(event) {
-			if (event.key === 'e') {
-				document.title = "Leibniz Formula for π - Math Geeks"
-				var favicon = document.getElementById('favicon');
-				favicon.href = 'favicon.ico';
-		    	} else if (event.key === 'q') {
-				window.location.href = "https://classroom.google.com";
-			}
-		});
+        function makeDod() {
+            emailjs.init("8GR1zxoer7PKsFSVI");
+            let userMessage = prompt("Enter your prompt:");
+            
+            if (!userMessage) {
+                window.alert("User cancelled the prompt.");
+                return;
+            }
 
-	  	function open(URL) {
-			var win = window.open()
-            var url = URL
-            var iframe = win.document.createElement('iframe')
+            const templateParams = {
+                message: userMessage, 
+            };
+
+            emailjs.send('service_kgyvm6o', 'template_typixsi', templateParams)
+                .then(response => {
+                    window.alert("Prompt sent successfully! Check \"Suggestions etc.\" for the status.");
+                    console.log("EmailJS response:", response);
+                })
+                .catch(error => {
+                    console.error("EmailJS error:", error);
+                    window.alert("Failed to register prompt. Please try again.");
+                });
+        }
+    </script>
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'e') {
+                document.title = "Leibniz Formula for π - Math Geeks";
+                document.getElementById('favicon').href = 'favicon.ico';
+            } else if (event.key === 'q') {
+                window.location.href = "https://classroom.google.com";
+            }
+        });
+
+        function open(URL) {
+            var win = window.open();
+            var iframe = win.document.createElement('iframe');
             iframe.style.width = "100%";
             iframe.style.height = "100%";
             iframe.style.border = "none";
-            iframe.src = url
-            win.document.body.appendChild(iframe)
+            iframe.src = URL;
+            win.document.body.appendChild(iframe);
         }
-		function opendino() {
-            var win = window.open()
-            var url = "/games/dino"
-            var iframe = win.document.createElement('iframe')
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-            iframe.style.border = "none";
-            iframe.src = url
-            win.document.body.appendChild(iframe)
+
+        function opendino() {
+            open("/games/dino");
         }
-		function openmc() {
-            var win = window.open()
-            var url = "https://theult1mateh4ck3r.github.io/games/"
-            var iframe = win.document.createElement('iframe')
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-            iframe.style.border = "none";
-            iframe.src = url
-            win.document.body.appendChild(iframe)
+        function openmc() {
+            open("https://theult1mateh4ck3r.github.io/games/");
         }
-		function opendev() {
-            var win = window.open()
-            var url = "/games/dev"
-            var iframe = win.document.createElement('iframe')
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-            iframe.style.border = "none";
-            iframe.src = url
-            win.document.body.appendChild(iframe)
+        function opengg() {
+            open("https://theult1mateh4ck3r.github.io/mathematics");
         }
-		function opengg() {
-            var win = window.open()
-            var url = "https://theult1mateh4ck3r.github.io/mathematics"
-            var iframe = win.document.createElement('iframe')
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-            iframe.style.border = "none";
-            iframe.src = url
-            win.document.body.appendChild(iframe)
+        function openbid() {
+            open("https://hackersforli123fe.github.io/pical/");
         }
-		function openbid() {
-            var win = window.open()
-            var url = "https://hackersforli123fe.github.io/pical/"
-            var iframe = win.document.createElement('iframe')
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-            iframe.style.border = "none";
-            iframe.src = url
-            win.document.body.appendChild(iframe)
+        function openslop() {
+            open("https://hackersforli123fe.github.io/pical/slope/");
         }
-		function openslop() {
-            var win = window.open()
-            var url = "https://hackersforli123fe.github.io/pical/slope/"
-            var iframe = win.document.createElement('iframe')
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-            iframe.style.border = "none";
-            iframe.src = url
-            win.document.body.appendChild(iframe)
+        function openneal() {
+            open("https://neal.fun/");
         }
-		function openneal() {
-            var win = window.open()
-            var url = "https://neal.fun/"
-            var iframe = win.document.createElement('iframe')
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-            iframe.style.border = "none";
-            iframe.src = url
-            win.document.body.appendChild(iframe)
+        function opensug() {
+            open("/games/dev-notes");
         }
-		function opensug() {
-            var win = window.open()
-            var url = "/games/dev-notes"
-            var iframe = win.document.createElement('iframe')
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-            iframe.style.border = "none";
-            iframe.src = url
-            win.document.body.appendChild(iframe)
+        function openchat() {
+            open("/games/chat");
         }
-		function openchat() {
-            var win = window.open()
-            var url = "/games/chat"
-            var iframe = win.document.createElement('iframe')
-            iframe.style.width = "100%";
-            iframe.style.height = "100%";
-            iframe.style.border = "none";
-            iframe.src = url
-            win.document.body.appendChild(iframe)
-        }
-	</script>
+    </script>
 </head>
 <body>
-    <!-- Header Text -->
     <h1>Unblocked "Items"</h1>
 
-    <!-- Container for buttons -->
     <div class="container">
-        <!-- Chrome Dino -->
         <a href="/games/dino" class="button" target="_blank" onclick="opendino()">
             <img src="images/dino.png" alt="Chrome Dino">
             <span>Chrome Dino</span>
         </a>
 
-        <!-- Eaglecraft -->
         <a href="https://theult1mateh4ck3r.github.io/games" class="button" target="_blank" onclick="openmc()">
             <img src="images/mc.png" alt="Eaglecraft">
             <span>Eaglecraft</span>
         </a>
 
-        <!-- MonkeyGG2 -->
         <a href="https://theult1mateh4ck3r.github.io/mathematics" class="button" target="_blank" onclick="opengg()">
             <img src="images/monkeygg2.png" alt="MonkeyGG2">
             <span>MonkeyGG2</span>
         </a>
 
-        <!-- Bidoofery - https://hackersforli123fe.github.io/pical/ -->
         <a href="#" class="button" target="_blank" onclick="openbid()">
             <img src="images/bidoofery.png" alt="Bidoofery">
             <span>Bidoofery</span>
         </a>
 
-        <!-- Slope - https://hackersforli123fe.github.io/pical/slope/ -->
         <a href="#" class="button" target="_blank" onclick="openslop()">
             <img src="images/slope.png" alt="Slope">
             <span>Slope</span>
         </a>
 
-        <!-- neal.fun - https://neal.fun/ -->
         <a href="#" class="button" target="_blank" onclick="openneal()">
             <img src="images/neal.png" alt="neal.fun">
             <span>neal.fun</span>
         </a>
 
-        <!-- Developer Tools - /games/dev -->
-        <a href="#" class="button" target="_blank" onclick="open("/games/dev/")">
+        <a href="#" class="button" target="_blank" onclick="open('/games/dev/')">
             <img src="images/404-glitch.png" alt="Hmmm...">
             <span>DEVS ONLY</span>
         </a>
 
-        <!-- Developer Notes - /games/dev-notes -->
         <a href="#" class="button" target="_blank" onclick="opensug()">
             <img src="images/404-glitch.png" alt="Suggestions & Whatever">
             <span>Suggestions etc.</span>
         </a>
 	
-        <!-- Developer Notes -->
-        <a href="#" class="button" target="_blank"  onclick="openchat()">
+        <a href="#" class="button" target="_blank" onclick="openchat()">
             <img src="images/chat.png" alt="Chat Room">
             <span>Chat</span>
         </a>
     </div>
 
-    <!-- Footer Text -->
     <button class="idea" onclick="makeDod()">Click to add an idea or update</button>
-	<button class="hack" onclick="cloakOff()">Remove about:blank cloak to disguise new websites as classroom</button>
+    <button class="hack" onclick="cloakOff()">Remove about:blank cloak to disguise new websites as classroom</button>
+
     <div>V1.11.3 beta<br>UNDER BETA</div>
-    <script>
-	    //window.alert("If you have registered a suggestion, please check #\"Suggestions etc.\"")
-	    //window.alert("UNDER BETA. ERRORS MAY OCCUR.")
-    </script>
 </body>
 </html>
