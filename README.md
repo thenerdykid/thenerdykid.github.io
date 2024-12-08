@@ -1,6 +1,7 @@
 # Lumenoxs
 Tutorial<br>
 <br>
+-Fork this, it should show near the top right<br>
 -Change "index.html" by looking thorugh and changing the parts where it says to update them by:<br>
 &emsp;  -Entering the website url or "ENTER YOUR WEBSITE NAME HERE":<br>
 &emsp; &emsp;   -"Your Github Username".github.io/"The Project Name"<br>
