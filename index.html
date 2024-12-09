@@ -91,7 +91,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         function makeDod() {
-            emailjs.init("8GR1zxoer7PKsFSVI");
+            emailjs.init("service_138xyu7");
             let userMessage = prompt("Enter your prompt:");
             
             if (!userMessage) {
@@ -103,7 +103,7 @@
                 message: userMessage, 
             };
 
-            emailjs.send('service_kgyvm6o', 'template_typixsi', templateParams)
+            emailjs.send('Service ID', 'Template ID', templateParams)
                 .then(response => {
                     window.alert("Prompt sent successfully! Check \"Suggestions etc.\" for the status.");
                     console.log("EmailJS response:", response);
